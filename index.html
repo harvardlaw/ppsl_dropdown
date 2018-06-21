@@ -53,7 +53,7 @@
 
           <h1 style="text-align: center ">What does the Court’s action mean to you?</h1><br>
 <p>
-If you enrolled on or after <b><span style="background:yellow; font-size: 20px;" id="xdate"></span></b>, you are a member of our proposed class. If you have submitted a form to the Department of Education applying for borrower defense, or have received a decision discharging only a percentage of your debt, the Court has ordered the Department of Education to STOP all collections on your loans and to place your loans in forbearance.
+If you enrolled <span id="ooa"> on or after</span> <b><span style="background:yellow; font-size: 20px;" id="xdate"></span></b>, you are a member of our proposed class. If you have submitted a form to the Department of Education applying for borrower defense, or have received a decision discharging only a percentage of your debt, the Court has ordered the Department of Education to STOP all collections on your loans and to place your loans in forbearance.
 <br><br>
 If you are a member of the proposed class and have not yet submitted an application, you can do so here. Once you do, the Court has ordered the Department to STOP all collections on your loans and to place your loans in forbearance.
 <br><br>
@@ -16379,7 +16379,17 @@ var jjj = {
         var x = $( "#chooseCampus option:selected" ).text();
         var y = $( "#chooseProgram option:selected" ).text();
           var jj = x+"-"+y
+
+          if ( jjj[jj]['DATE'].indexOf('-') > -1) {
+              $("#ooa").text(" between the following dates ")
+          } else {
+               $("#ooa").text(" on or after ")
+
+          }
+
+
           $("#xdate").text(jjj[jj]['DATE'])
+
       });
 
 
