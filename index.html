@@ -16394,6 +16394,17 @@ var jjj = {
 
 
      });
+
+    $("#chooseCampus").append($("#chooseCampus option").remove().sort(function(a, b) {
+    var at = $(a).text(), bt = $(b).text();
+    return (at > bt)?1:((at < bt)?-1:0);
+    }));
+
+    $("#chooseProgram").append($("#chooseProgram option").remove().sort(function(a, b) {
+    var at = $(a).text(), bt = $(b).text();
+    return (at > bt)?1:((at < bt)?-1:0);
+    }));
+
 </script>
 
 </html>
