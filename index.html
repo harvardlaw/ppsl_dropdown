@@ -52,14 +52,19 @@
 
 
           <h1 style="text-align: center ">What does the Court’s action mean to you?</h1><br>
-<p>
+<p id="maintext">
 If you enrolled <span id="ooa"> on or after</span> <b><span style="background:yellow; font-size: 20px;" id="xdate"></span></b>, you are a member of our proposed class. If you have submitted a form to the Department of Education applying for borrower defense, or have received a decision discharging only a percentage of your debt, the Court has ordered the Department of Education to STOP all collections on your loans and to place your loans in forbearance.
 <br><br>
-If you are a member of the proposed class and have not yet submitted an application, you can do so <a href="https://borrowerdischarge.ed.gov/FormWizard/BDU/BDULanding.aspx" target="_blank">here</a>. Once you do, the Court has ordered the Department to STOP all collections on your loans and to place your loans in forbearance.
+If you are a member of the proposed class and have not yet submitted an application, you can do so here. Once you do, the Court has ordered the Department to STOP all collections on your loans and to place your loans in forbearance.
 <br><br>
 Unfortunately, if you are not a member of the proposed class, but have received only a partial discharge of your loans, this order does not directly apply to you. However, if you are in this situation, please contact us directly at ppsl@law.harvard.edu.</p>
 
+          <p id="backuptext">You are not a member of the proposed class. If you haven’t already, consider applying for borrower defense using the Department of Education’s Universal Borrower Defense form here. </p>
+
+
       </div>
+
+
     </form>
 
 </div>
@@ -16378,6 +16383,8 @@ var jjj = {
         $('#chooseProgram').append(new Option(p[i]['PROGRAM'], p[i]['PROGRAM'], true, true));
         $('#chooseProgram').val('1');
     }
+        $('#chooseProgram').append(new Option("None of the Above", "None of the Above", true, true));
+        $('#chooseProgram').val('1');
 
 
      });
@@ -16394,18 +16401,25 @@ var jjj = {
 
         var x = $( "#chooseCampus option:selected" ).text();
         var y = $( "#chooseProgram option:selected" ).text();
-          var jj = x+"-"+y
+{#          alert(y)#}
 
-          if ( jjj[jj]['DATE'].indexOf('-') > -1) {
-              $("#ooa").text(" between the following dates ")
-          } else {
-               $("#ooa").text(" on or after ")
+                    if (y == "None of the Above") {
+                            $("#backuptext").show()
+                            $("#maintext").hide()
+                    }else {
+                        $("#backuptext").hide()
+                            $("#maintext").show()
 
-          }
+                        var jj = x + "-" + y
 
+                        if (jjj[jj]['DATE'].indexOf('-') > -1) {
+                            $("#ooa").text(" between the following dates ")
+                        } else {
+                            $("#ooa").text(" on or after ")
 
-          $("#xdate").text(jjj[jj]['DATE'])
-
+                        }
+                        $("#xdate").text(jjj[jj]['DATE'])
+                    }
       });
 
 
@@ -16417,6 +16431,16 @@ var jjj = {
     return (at > bt)?1:((at < bt)?-1:0);
     }));
 
+{#    $("#chooseCampus").append($("#chooseCampus option").remove().sort(function(a, b) {#}
+{#    var at = $(a).text(), bt = $(b).text();#}
+{##}
+{#    return (at > bt)?1:((at < bt)?-1:0);#}
+{#    }));#}
+
+{#    $("#chooseProgram").append($("#chooseProgram option").remove().sort(function(a, b) {#}
+{#    var at = $(a).text(), bt = $(b).text();#}
+{#    return (at > bt)?1:((at < bt)?-1:0);#}
+{#    }));#}
 
 </script>
 
