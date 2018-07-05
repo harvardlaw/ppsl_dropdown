@@ -16338,7 +16338,6 @@ var jjj = {
 
 
     }
-{#     $('#chooseSchool').val("1")#}
 
      $(document).on('change','#chooseSchool',function(){
          var x = $( "#chooseSchool option:selected" ).text();
@@ -16367,7 +16366,6 @@ var jjj = {
 
      for (var i in uniqueNames) {
         $('#chooseCampus').append(new Option(uniqueNames[i], uniqueNames[i]));
-{#        $('#chooseCampus').val('1');#}
     }
 
              $("#chooseCampus").append($("#chooseCampus option").remove().sort(function(a, b) {
@@ -16388,12 +16386,9 @@ var jjj = {
             $("#program").css({'display':''})
        for (var i in p) {
         $('#chooseProgram').append(new Option(p[i]['PROGRAM'], p[i]['PROGRAM']));
-{#        $('#chooseProgram').val('1');#}
     }
         $('#chooseProgram').append(new Option("None of the Above", "None of the Above"));
-{#        $('#chooseProgram').val('1');#}
 
-{#         $("#chooseProgram").val($("#chooseProgram option:first").val());#}
 
 
      });
@@ -16404,11 +16399,6 @@ var jjj = {
       $(document).on('change','#chooseProgram',function(e) {
           console.log(e)
         $("#answerwindow").css({"display":""})
-
-{#              $("#chooseProgram").append($("#chooseProgram option").remove().sort(function(a, b) {#}
-{#    var at = $(a).text(), bt = $(b).text();#}
-{#    return (at > bt)?1:((at < bt)?-1:0);#}
-{#    }));#}
 
 
 
