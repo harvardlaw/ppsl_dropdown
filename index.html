@@ -18,7 +18,7 @@
       <div class="form-group">
         <label for="chooseSchool">Choose School</label>
         <select class="form-control" id="chooseSchool">
-          <option selected value="1"> Choose your School</option>
+          <option value="-1"> Choose your School</option>
 
         </select>
 
@@ -28,7 +28,7 @@
       <div id='campus' class="form-group" style="display:none">
         <label for="chooseCampus">Choose Campus</label>
         <select class="form-control" id="chooseCampus">
-          <option selected value="1"> Select your Campus</option>
+          <option value="1"> Select your Campus</option>
 
         </select>
 
@@ -38,7 +38,7 @@
       <div id='program' class="form-group" style="display:none">
         <label for="chooseProgram">Choose Program</label>
         <select class="form-control" id="chooseProgram">
-          <option selected value="1"> Select your Program</option>
+          <option value="1"> Select your Program</option>
 
         </select>
 
@@ -16330,11 +16330,15 @@ var jjj = {
       "DATE": "2/13/14"
    }
 }
-    for (var i in schools) {
+        var select = document.getElementById("chooseSchool");
+        var scho = ['Everest', "Heald", "WyoTech"]
+    for (var i in scho) {
+    console.log(scho[i])
+        $('#chooseSchool').append(new Option(scho[i], i, false, false));
 
-        $('#chooseSchool').append(new Option(i, schools[i], true, true));
-        $('#chooseSchool').val('1');
+
     }
+{#     $('#chooseSchool').val("1")#}
 
      $(document).on('change','#chooseSchool',function(){
          var x = $( "#chooseSchool option:selected" ).text();
@@ -16362,15 +16366,18 @@ var jjj = {
         });
 
      for (var i in uniqueNames) {
-        $('#chooseCampus').append(new Option(uniqueNames[i], uniqueNames[i], true, true));
-        $('#chooseCampus').val('1');
+        $('#chooseCampus').append(new Option(uniqueNames[i], uniqueNames[i]));
+{#        $('#chooseCampus').val('1');#}
     }
 
              $("#chooseCampus").append($("#chooseCampus option").remove().sort(function(a, b) {
     var at = $(a).text(), bt = $(b).text();
         console.log("campus")
+                          $("#chooseCampus").val($("#chooseCampus option:first").val());
+
     return (at > bt)?1:((at < bt)?-1:0);
     }));
+         $("#chooseCampus").val($("#chooseCampus option:first").val());
 
 
       $(document).on('change','#chooseCampus',function(){
@@ -16380,27 +16387,34 @@ var jjj = {
           $('#chooseProgram').find('option').remove()
             $("#program").css({'display':''})
        for (var i in p) {
-        $('#chooseProgram').append(new Option(p[i]['PROGRAM'], p[i]['PROGRAM'], true, true));
-        $('#chooseProgram').val('1');
+        $('#chooseProgram').append(new Option(p[i]['PROGRAM'], p[i]['PROGRAM']));
+{#        $('#chooseProgram').val('1');#}
     }
-        $('#chooseProgram').append(new Option("None of the Above", "None of the Above", true, true));
-        $('#chooseProgram').val('1');
+        $('#chooseProgram').append(new Option("None of the Above", "None of the Above"));
+{#        $('#chooseProgram').val('1');#}
+
+{#         $("#chooseProgram").val($("#chooseProgram option:first").val());#}
 
 
      });
 
-      $(document).on('change','#chooseProgram',function() {
+
+
+
+      $(document).on('change','#chooseProgram',function(e) {
+          console.log(e)
         $("#answerwindow").css({"display":""})
 
-              $("#chooseProgram").append($("#chooseProgram option").remove().sort(function(a, b) {
-    var at = $(a).text(), bt = $(b).text();
-    return (at > bt)?1:((at < bt)?-1:0);
-    }));
+{#              $("#chooseProgram").append($("#chooseProgram option").remove().sort(function(a, b) {#}
+{#    var at = $(a).text(), bt = $(b).text();#}
+{#    return (at > bt)?1:((at < bt)?-1:0);#}
+{#    }));#}
 
 
 
         var x = $( "#chooseCampus option:selected" ).text();
         var y = $( "#chooseProgram option:selected" ).text();
+
 
                     if (y == "None of the Above") {
                             $("#backuptext").show()
@@ -16427,10 +16441,16 @@ var jjj = {
     $("#chooseSchool").append($("#chooseSchool option").remove().sort(function(a, b) {
     var at = $(a).text(), bt = $(b).text();
         console.log("SCHOOOLL")
+        $("#chooseProgram").val($("#chooseProgram option:first").val());
     return (at > bt)?1:((at < bt)?-1:0);
     }));
+
+        $("#chooseSchool").val($("#chooseSchool option:first").val());
+        $("#chooseProgram").val($("#chooseProgram option:first").val());
+        $("#chooseCampus").val($("#chooseCampus option:first").val());
 
 
 </script>
 
 </html>
+
