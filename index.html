@@ -16386,6 +16386,9 @@ var jjj = {
           var  p = programs[x]
           $('#chooseProgram').find('option').remove()
             $("#program").css({'display':''})
+          
+          
+          $('#chooseProgram').append(new Option(" Choose Program", " Choose Program"));
        for (var i in p) {
         $('#chooseProgram').append(new Option(p[i]['PROGRAM'], p[i]['PROGRAM']));
     }
