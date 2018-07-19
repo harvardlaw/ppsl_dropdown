@@ -16368,6 +16368,7 @@ var jjj = {
      for (var i in uniqueNames) {
         $('#chooseCampus').append(new Option(uniqueNames[i], uniqueNames[i]));
     }
+         $('#chooseCampus').append(new Option(" Choose Campus", " Choose Campus"));
 
              $("#chooseCampus").append($("#chooseCampus option").remove().sort(function(a, b) {
     var at = $(a).text(), bt = $(b).text();
@@ -16376,7 +16377,6 @@ var jjj = {
 
     return (at > bt)?1:((at < bt)?-1:0);
     }));
-         $('#chooseCampus').prepend(new Option(" Choose Campus", " Choose Campus"));
          $("#chooseCampus").val($("#chooseCampus option:first").val());
 
 
