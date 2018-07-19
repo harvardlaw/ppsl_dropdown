@@ -16384,11 +16384,13 @@ var jjj = {
          var x = $( "#chooseCampus option:selected" ).text();
           console.log(programs[x])
           var  p = programs[x]
+           $('#chooseProgram').append(new Option(" Choose Program", " Choose Program"));
           $('#chooseProgram').find('option').remove()
             $("#program").css({'display':''})
           
           
           $('#chooseProgram').append(new Option(" Choose Program", " Choose Program"));
+          
        for (var i in p) {
         $('#chooseProgram').append(new Option(p[i]['PROGRAM'], p[i]['PROGRAM']));
     }
